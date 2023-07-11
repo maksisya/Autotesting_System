@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Current task{% endblock title %}
+
+{% block headd %}
+
+{% endblock headd %}
+
+{% block content %}
+    <div class="task-container">
+        <div class="text-header">
+            <p>{{ task_info.name }}</p>
+        </div>
+        <div class="ref-list">
+            <a class="list-item" href="/lab_works_list/{{ task_info.lab_work_id }}/">К лабораторной работе</a>
+            <a class="list-item" href="/lab_works_list/{{ task_info.lab_work_id }}/{{ task_info.id }}/submissions_list/">Отчет об отправленных решениях</a>
+        </div>
+    </div>
+    <hr>
+    <div class="task-info">
+        <div class="main-text">
+            <div class="text-body">
+                <p class="text-header-task">Текст задачи:</p>
+                <p>{{ task_info.text }}</p><hr>
+                <p class="text-header-task">Input:</p>
+                <p>{{ task_info.input_data }}</p><hr>
+                <p class="text-header-task">Output:</p>
+                <p>{{ task_info.output_data }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="form">
+        <form action="/lab_works_list/{{ task_info.lab_work_id }}/{{ task_info.id }}/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-text">
+                {{ form }}
+                <input class="list-item" type="submit" value="Отправить решение">
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Lab_works{% endblock title %}Lab_works
+
+{% block content %}
+    <div class="main-text">
+        <div class="text-header">
+            <p>Список доступных лабораторных работ</p><hr>
+        </div>
+        <div class="ref-list">
+            <div class="nav">
+                {% if lab_list %}
+                {% for lab in lab_list %}
+            
+                <a class="list-item" href="/lab_works_list/{{ lab.id }}">{{ lab.title }}</a>
+            
+                {% endfor %}
+                {% else %}
+                <p>Нет доступных лабораторных работ</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

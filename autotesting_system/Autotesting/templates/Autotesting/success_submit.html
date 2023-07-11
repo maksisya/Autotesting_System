@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Submit{% endblock title %}
+
+{% block headd %}
+
+{% endblock headd %}
+
+{% block content %}
+    <div class="main-text">
+        <div class="text-header">
+            <p>Решение успешно отправлено!</p><hr>
+            <p class="text-body">ID решения: {{ sumbission_id }}</p>
+        </div>
+        <div class="ref-list">
+            <a class="list-item" href="/lab_works_list/{{ lab_id }}/{{ task_id }}/">К заданию</a>
+        </div>
+    </div>
+{% endblock content %}

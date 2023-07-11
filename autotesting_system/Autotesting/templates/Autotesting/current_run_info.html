@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Тесты{% endblock title %}
+
+{% block headd %}
+<link rel="stylesheet" href="{% static "css/github.css" %}" type="text/css">
+{% endblock headd %}
+
+{% block content %}
+<div class="main-text">
+    <div class="text-header">
+        <p>Информация о тестировании решения</p>
+    </div>
+    <div class="text-body">
+        <div class="submissions_table">
+            <table>
+                <tr>
+                    <th class="th-text">Тест</th>
+                    <th class="th-text">Ввод</th>
+                    <th class="th-text">Вывод</th>
+                    <th class="th-text">Ответ</th>
+                    <th class="th-text">Вердикт</th>
+                </tr>
+                {% for current_test in current_run_info.checkerLog %}
+                <tr>
+                    <td>
+                        {{ current_test.testName }}
+                    </td>
+                    <td>
+                        {{ current_test.input }}
+                    </td>
+                    <td>
+                        {{ current_test.output }}
+                    </td>
+                    <td>
+                        {{ current_test.answer }}
+                    </td>
+                    <td>
+                        {{ current_test.verdict }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+    
+        </div>
+        <p>Исходный код:</p>
+        <div class="submission_text">
+            <pre><code data-language="python">{{ current_run_info.source }}</code></pre>
+        </div>
+    </div>
+    <div class="ref-list">
+        <a class="list-item" href="{% url 'lab_list' %}">К темам лабораторных работ</a>
+        <a class="list-item" href="/lab_works_list/{{ lab_id }}/{{ task_id }}/">К заданию</a>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Main page{% endblock title %}
+
+{% block headd %}
+
+{% endblock headd %}
+
+{% block authorization_button %}
+    <div class="btn">
+        <a class="button" href="{% url 'success_auth' %}">АВТОРИЗАЦИЯ</a>
+    </div>
+{% endblock authorization_button %}
+
+{% block content %}
+    <div class="main-text">
+        <div class="text-header">
+            <p>Добро жаловать на главную страницу!</p>
+            <hr>
+        </div>
+        <div class="text-body">
+            <p>Для продолжения работы с системой, необходимо авторизоваться.</p>
+        </div>
+    </div>
+{% endblock content %}

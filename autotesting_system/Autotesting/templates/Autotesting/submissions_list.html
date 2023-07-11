@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Submissions list{% endblock title %}
+
+{% block headd %}
+
+{% endblock headd %}
+
+{% block content %}
+    <div class="main-text">
+        <div class="text-header">
+            <p>Информация об отправленных решениях</p>
+        </div>
+        {% if runs %}
+        <div class="text-body">
+            <div class="submissions_table">
+                <table>
+                    <tr>
+                        <th class="th-text">ID решения</th>
+                        <th class="th-text">Время отправки</th>
+                        <th class="th-text">Задача</th>
+                        <th class="th-text">Участник</th>
+                        <th class="th-text">Вердикт</th>
+                    </tr>
+                    {% for run in runs %}
+                    <tr>
+                        
+                        <td>
+                            <a class="runIdStyle" href="/lab_works_list/{{lab_id}}/{{task_id}}/submissions_list/{{run.runId}}/">{{ run.runId }}</a>
+                        </td>
+                        <td>
+                            {{ run.submissionTime }}
+                        </td>
+                        <td>
+                            {{ run.problemName }}
+                        </td>
+                        <td>
+                            {{ run.participantInfo.login }}
+    
+                            {% comment %} {{ 'runs[0]["participantInfo"]["login"]' }} {% endcomment %}
+                        </td>
+                        <td>
+                            {{ run.verdict }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        {% else %}
+        <div class="text-body">
+            <p>Отправленных решений нет</p>
+        </div>
+        {% endif %}
+        
+        <div class="ref-list">
+            <a class="list-item" href="/lab_works_list/{{ lab_id }}/{{ task_id }}/">К заданию</a>
+        </div>
+    </div>
+{% endblock content %}

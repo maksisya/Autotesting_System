@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Authorization{% endblock title %}
+
+{% block headd %}
+
+{% endblock headd %}
+
+{% block content %}
+    <div class="main-text">
+        <div class="text-header">
+            <p>Успешная авторизация!</p>
+            <hr>
+            <p class="text-body">Вы авторизованы как {{ user_fullname }}.</p>
+        </div>
+        <div class="ref-list">
+            <div class="nav">
+                <a class="list-item" href="/lab_works_list/">Список лабораторных работ</a>
+            </div>
+        </div>
+    </div>
+    {% comment %} <p><a href="/contest_info/">Информация о контесте</a></p> {% endcomment %}
+{% endblock content %}

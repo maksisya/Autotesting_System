@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Tasks for lab{% endblock title %}
+
+{% block headd %}
+
+{% endblock headd %}
+
+{% block content %}
+    <div class="main-text">
+        <div class="text-header">
+            <p>Список заданий на {{ task_list.lab_work_id }} лабораторную работу</p><hr>
+        </div>
+        <div class="ref-list">
+            <div class="nav">
+                {% if task_list %}
+                {% for task in task_list %}
+            
+                <a class="list-item" href="/lab_works_list/{{ task.lab_work_id }}/{{ task.id }}/">{{ task.name }}</a>
+            
+                {% endfor %}
+                {% else %}
+                <div class="text-body">
+                    <p>Нет доступных заданий на лабораторную работу</p>
+                </div>
+                <div class="ref-list">
+                    <div class="nav">
+                        <a class="list-item" href="{% url 'lab_list' %}">Список лабораторных работ</a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+        </div>
+    </div>
+{% endblock content %}
